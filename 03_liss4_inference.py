@@ -91,7 +91,11 @@ def main():
     if not glob.glob(f"{EXTRACT_DIR}/**/*BAND2*.tif", recursive=True):
         print(f"Extracting raw spatial data from {ZIP_PATH}...")
         with zipfile.ZipFile(ZIP_PATH, 'r') as zip_ref:
-            zip_ref.extractall(EXTRACT_DIR)
+            for member in zip_ref.namelist():
+                # Mitigate Zip Slip vulnerabilities
+                if member.startswith("/") or ".." in member:
+                    raise ValueError("Malicious file path detected in zip archive!")
+                zip_ref.extract(member, EXTRACT_DIR)
 
     band2_path = glob.glob(f"{EXTRACT_DIR}/**/*BAND2*.tif", recursive=True)[0]
     band3_path = glob.glob(f"{EXTRACT_DIR}/**/*BAND3*.tif", recursive=True)[0]
@@ -109,7 +113,8 @@ def main():
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     model = AdvancedCloudUNet().to(device)
-    model.load_state_dict(torch.load(WEIGHTS_PATH, map_location=device))
+    # Mitigate insecure pickle deserialization vulnerability
+    model.load_state_dict(torch.load(WEIGHTS_PATH, map_location=device, weights_only=True))
     model.eval()
 
     with rasterio.open(band2_path) as ref:
