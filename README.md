@@ -22,11 +22,12 @@ A production-grade, out-of-memory (OOM) safe machine learning pipeline engineere
 ## Tech Stack
 
 - **Language:** Python 3.10+
-- **Deep Learning Framework:** PyTorch 2.0+ (Torchvision)
-- **Geospatial Processing:** Rasterio, GDAL, EarthEngine-API
-- **Data Pipeline:** H5py, NumPy
-- **Visualization:** Matplotlib
-- **Primary Model Architecture:** ResNet34-UNet (9-channel Modified Encoder)
+- **Deep Learning Framework:** PyTorch 2.0+ (Torchvision, TorchGeo, Pytorch Lightning)
+- **Geospatial Processing:** Rasterio, GDAL, EarthEngine-API, GeoPandas, STAC, Xarray
+- **Data Pipeline:** H5py, NumPy, Zarr, Dask
+- **Visualization:** Matplotlib, Folium, Datashader 
+- **Primary Model Architecture:** Prithvi (NASA Foundation Model) / SegFormer (Fallback: ResNet34-UNet with remote sensing pre-trained weights)
+- **MLOps:** Weights & Biases (W&B) / MLflow
 
 ---
 
