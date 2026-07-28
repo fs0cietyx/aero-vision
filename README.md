@@ -2,6 +2,10 @@
   <img src="assets/banner.png" alt="AeroVision ASCII Banner" width="80%">
 </p>
 
+<p align="center">
+  <img src="assets/results.jpeg" alt="ISRO Validation Results" width="100%">
+</p>
+
 # AeroVision Cloud Synthesis Architecture
 
 A production-grade, out-of-memory (OOM) safe machine learning pipeline engineered for the removal of atmospheric obstructions (cloud cover) from high-resolution satellite imagery. Engineered specifically for cross-sensor compatibility with ISRO LISS-IV payload data.
@@ -104,11 +108,7 @@ python 04_visual_validation.py
 
 ### 6. Expected Final Output
 
-Once `04_visual_validation.py` completes, you will have successfully generated a radiometric comparison.
-
-<p align="center">
-  <img src="assets/results.jpeg" alt="ISRO Validation Results">
-</p>
+Once `04_visual_validation.py` completes, you will have successfully generated a radiometric comparison identical to the showcase graphic at the top of this document.
 
 ---
 
