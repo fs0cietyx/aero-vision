@@ -1,0 +1,7 @@
+numpy
+torch
+torchvision
+rasterio
+h5py
+matplotlib
+earthengine-api
